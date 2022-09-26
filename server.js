@@ -78,7 +78,7 @@ app.get("/people", async (req, res) => {
     }
 })
 
-// CREATE people route
+// NEW people route
 app.post("/people", async(req, res) =>{
     try {
         // send all ppl
@@ -102,6 +102,15 @@ app.delete("/people/:id", async(req, res) =>{
 app.put("/people/:id", async(req, res) =>{
     try {
         res.json(await People.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+// SHOW people route
+app.get("/people/:id", async(req, res) =>{
+    try {
+        res.json(await People.findById(req.params.id))
     } catch (error) {
         res.status(400).json(error)
     }
