@@ -66,6 +66,14 @@ app.get("/", async (req, res) =>{
     }
 })
 
+app.get("/about", async (req, res) =>{
+    try {
+        res.render("About.jsx")
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
 // INDEX people route
 // async/await is being used here because we are "calling our backend". since react will be making the call. 
 // this is a common setup for backend devs, including the try/catch setup. 
