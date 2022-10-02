@@ -58,8 +58,12 @@ app.use(express.json()) // parse json bodies
 ///////// ROUTES
 ///////////////////////////////
 // create a test route
-app.get("/", (req, res) =>{
-    res.send("GENERAL KENOBI!")
+app.get("/", async (req, res) =>{
+    try {
+        res.render("Home.jsx")
+    } catch (error) {
+        res.status(400).json(error)
+    }
 })
 
 // INDEX people route
